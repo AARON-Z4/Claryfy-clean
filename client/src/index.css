@@ -1,0 +1,532 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222 47% 11%;
+  }
+
+  .dark {
+    --background: 222 84% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 70% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 213 94% 68%;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/*=============================================
+=            LANDING PAGE STYLES              =
+=============================================*/
+
+.landing-page-dark {
+  background-color: #020617; /* slate-950 */
+  color: #f8fafc; /* slate-50 */
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Animated Gradient Text */
+.animated-gradient-text {
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc, #f472b6);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 6s ease infinite;
+}
+
+.animated-gradient-text-hero {
+    background: linear-gradient(90deg, #67e8f9, #a5b4fc, #d8b4fe, #fb7185, #67e8f9);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 8s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Header */
+header {
+    background-color: rgba(2, 6, 23, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(45, 55, 72, 0.5);
+}
+
+.nav-link {
+    position: relative;
+    color: #cbd5e1; /* slate-300 */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #818cf8, #c084fc);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* CTA Buttons */
+.cta-button, .cta-button-large {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  background-size: 200% 200%;
+  border: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.cta-button {
+  padding: 10px 24px;
+}
+
+.cta-button-large {
+  padding: 16px 40px;
+  font-size: 1.125rem;
+}
+
+.cta-button:hover, .cta-button-large:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(129, 140, 248, 0.2), 0 6px 6px rgba(129, 140, 248, 0.2);
+  background-position: right center;
+}
+
+/* Background Animation */
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.background-animation > div {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(56, 189, 248, 0) 60%);
+    animation: move 20s infinite alternate ease-in-out;
+}
+
+.circle-1 {
+    width: 500px;
+    height: 500px;
+    top: 10%;
+    left: 5%;
+    animation-duration: 25s;
+}
+
+.circle-2 {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 60%;
+    background: radial-gradient(circle, rgba(192, 132, 252, 0.15) 0%, rgba(192, 132, 252, 0) 60%);
+    animation-duration: 20s;
+}
+
+.circle-3 {
+    width: 400px;
+    height: 400px;
+    bottom: 5%;
+    right: 5%;
+    background: radial-gradient(circle, rgba(130, 140, 250, 0.1) 0%, rgba(130, 140, 250, 0) 60%);
+    animation-duration: 30s;
+}
+
+
+@keyframes move {
+    from {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    to {
+        transform: translate(100px, 50px) rotate(45deg);
+    }
+}
+
+
+/* How It Works Section */
+.step-card {
+    background: rgba(15, 23, 42, 0.5); /* slate-900/50 */
+    border: 1px solid #1e293b; /* slate-800 */
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+    border-color: #38bdf8;
+}
+
+/* Scroll Fade In Animation */
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.scroll-fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*=============================================
+=         NEW HOMEPAGE ANIMATIONS             =
+=============================================*/
+
+/* Live Demo Animation */
+.live-demo-container {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #1e293b; /* slate-800 */
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 2rem auto 0 auto;
+  max-width: 48rem;
+  text-align: left;
+  border: 1px solid #334155; /* slate-700 */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.typing-text-container {
+  display: inline-block;
+}
+
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: .15em solid #38bdf8; /* A blinking cursor */
+  animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #38bdf8; }
+}
+
+.analysis-result {
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-left: 0.5rem;
+  animation: fade-in-result 0.5s ease-out forwards;
+}
+
+@keyframes fade-in-result {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.result-real {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #4ade80; /* green-400 */
+}
+.result-fake {
+  background-color: rgba(248, 113, 113, 0.2);
+  color: #f87171; /* red-400 */
+}
+
+/* New Step Card Animations */
+.step-card-animation {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 2px solid #334155;
+}
+
+.step-card-animation .icon {
+  z-index: 10;
+  color: #94a3b8; /* slate-400 */
+  transition: color 0.3s ease;
+}
+
+.step-card:hover .icon {
+  color: white;
+}
+
+.step-card-animation::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: conic-gradient(
+    #38bdf8, 
+    #818cf8,
+    #a78bfa,
+    #38bdf8
+  );
+  animation: rotate-border 4s linear infinite;
+}
+
+.step-card-animation::after {
+  content: '';
+  position: absolute;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background: #1e293b;
+  border-radius: 50%;
+}
+
+@keyframes rotate-border {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*=============================================
+=      NEW Q&A AND FEATURES SECTIONS        =
+=============================================*/
+
+/* Q&A Experiment Section */
+.qa-section {
+  background: radial-gradient(circle at 50% 0%, #1e293b, #020617 70%);
+  padding: 8rem 0;
+  overflow: hidden;
+}
+
+.qa-container {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid #1e293b;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+.qa-item {
+    border-left: 3px solid #334155;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+    transition: border-color 0.3s ease;
+}
+
+.qa-item:hover {
+    border-color: #818cf8;
+}
+
+.qa-question {
+    color: #e2e8f0; /* slate-200 */
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+}
+
+.qa-answer {
+    color: #94a3b8; /* slate-400 */
+    line-height: 1.6;
+}
+
+/* Redesigned Features Section */
+.features-reimagined {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.feature-item:hover {
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+.feature-icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    color: white;
+}
+
+.feature-visual-panel {
+    background-color: #0f172a;
+    border-radius: 1.5rem;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid #1e293b;
+}
+
+.feature-visual-panel .animated-gradient-text {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/*=============================================
+=      OUTSTANDING HOMEPAGE UPGRADES        =
+=============================================*/
+
+/* Final CTA Section */
+.final-cta-section {
+    position: relative;
+    padding: 8rem 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.final-cta-section .background-animation .circle-1 {
+    width: 600px;
+    height: 600px;
+    top: -20%;
+    left: -10%;
+    animation-duration: 40s;
+}
+.final-cta-section .background-animation .circle-2 {
+    width: 400px;
+    height: 400px;
+    bottom: -30%;
+    right: -15%;
+    animation-duration: 35s;
+}
+
+/* Hero Section with Globe */
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 6rem; /* Account for header height */
+}
+
+.hero-text-panel {
+    text-align: left;
+    z-index: 10;
+}
+
+/*=============================================
+=         MAIN APP UI REDESIGN STYLES         =
+=============================================*/
+.main-app-container {
+    background-color: #020617; /* Same as landing page */
+}
+
+/* Custom Scrollbar for chat history */
+.chat-history-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-history-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-history-scrollbar::-webkit-scrollbar-thumb {
+  background: #334155; /* slate-700 */
+  border-radius: 10px;
+}
+.chat-history-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #475569; /* slate-600 */
+}
+
+/* Welcome Screen Glow Effect */
+.clarifyt-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(129, 140, 248, 0.25) 0%, rgba(129, 140, 248, 0) 70%);
+    filter: blur(40px);
+    z-index: 0;
+    animation: pulse-glow 5s infinite alternate;
+}
+
+@keyframes pulse-glow {
+    from { transform: translate(-50%, -50%) scale(0.8); opacity: 0.7; }
+    to { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+}
